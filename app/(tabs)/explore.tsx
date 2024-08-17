@@ -70,7 +70,7 @@ export default function TabTwoScreen() {
       </Collapsible>
       <Collapsible title="Animations">
         <ThemedText>
-          This template includes an example of an animated component. The{' '}
+          EAT SHIT STUPID GLOBALISTS LOLOLLOL This template includes an example of an animated component. The{' '}
           <ThemedText type="defaultSemiBold">components/HelloWave.tsx</ThemedText> component uses
           the powerful <ThemedText type="defaultSemiBold">react-native-reanimated</ThemedText> library
           to create a waving hand animation.
