@@ -7,6 +7,7 @@ import { Link, router } from "expo-router";
 import OAuth from "@/components/OAuth";
 import { useSignUp } from "@clerk/clerk-expo";
 import ReactNativeModal from "react-native-modal";
+import { fetchAPI } from "@/lib/fetch";
 
 // creatte an interface for the verification object
 interface Verification {
@@ -61,16 +62,24 @@ const SignUp = () => {
       });
 
       if (completeSignUp.status === "complete") {
-        // TODO: create a database user
-        await setActive({  session: completeSignUp.createdSessionId });
+        await fetchAPI("/(api)/user", {
+          method: "POST",
+          body: JSON.stringify({
+            name: form.name,
+            email: form.email,
+            clerkId: completeSignUp.createdUserId
+          }),
+        });
+
+        await setActive({ session: completeSignUp.createdSessionId });
         setVerification({ ...verification, state: "success" });
       } else {
         console.error(JSON.stringify(completeSignUp, null, 2));
-        setVerification({
-          ...verification,
-          state: "failed",
-          error: "verification failed",
-        });
+        // setVerification({
+        //   ...verification,
+        //   state: "failed",
+        //   error: "verification failed",
+        // });
       }
     } catch (err: any) {
       console.error(JSON.stringify(err, null, 2));
@@ -183,7 +192,8 @@ const SignUp = () => {
               className="mt-5"
               onPress={() => {
                 setShowSuccessModal(false);
-                router.push("./(root)/(tabs)/home")}}
+                router.push("./(root)/(tabs)/home");
+              }}
             />
           </View>
         </ReactNativeModal>
