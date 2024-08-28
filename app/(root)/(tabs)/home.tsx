@@ -8,6 +8,7 @@ import { Link, router } from "expo-router";
 import { useEffect, useState } from "react";
 import {
   ActivityIndicator,
+  Alert,
   FlatList,
   Image,
   Text,
@@ -131,6 +132,7 @@ export default function Page() {
   const [hasPermisions, setHasPermisions] = useState(false);
 
   const handleSignOut = async () => {};
+
   const handleDestinationPress = (location: {
     latitude: number;
     longitude: number;
@@ -146,6 +148,7 @@ export default function Page() {
 
       if (status !== "granted") {
         setHasPermisions(false);
+        Alert.alert("Permission to access location was denied");
         return;
       }
 
@@ -156,13 +159,13 @@ export default function Page() {
         longitude: location.coords?.longitude!,
       });
 
+
       setUserLocation({
-        // latitude: location.coords?.latitude,
-        // longitude: location.coords?.longitude,
-        latitude: 37.78825,
-        longitude: -122.4324,
+        latitude: location.coords?.latitude,
+        longitude: location.coords?.longitude,
         address: `${address[0].name}, ${address[0].region}`,
       });
+
     };
 
     requestLocation();

@@ -72,8 +72,6 @@ const GoogleTextInput = ({
             address: data.description,
           });
         }}
-        // remove the powered by google logo
-        // renderPoweredBy={() => null}
         enablePoweredByContainer={false}
       />
     </View>

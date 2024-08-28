@@ -21,7 +21,7 @@ export const useLocationStore = create<LocationStore>((set) => ({
     address: string;
   }) => {
     set(() => ({
-      userLattitude: latitude,
+      userLatitude: latitude,
       userLongitude: longitude,
       userAddress: address,
     }));
@@ -38,7 +38,7 @@ export const useLocationStore = create<LocationStore>((set) => ({
     set(() => ({
       destinationLatitude: latitude,
       destinationLongitude: longitude,
-      destinationAdress: address,
+      destinationAddress: address,
     }));
   },
 }));

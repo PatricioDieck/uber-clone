@@ -18,7 +18,7 @@ export const generateMarkersFromData = ({
     return {
       latitude: userLatitude + latOffset,
       longitude: userLongitude + lngOffset,
-      // id: driver.driver_id,
+      id: driver.driver_id,
       title: `${driver.first_name} ${driver.last_name}`,
       ...driver,
     };
